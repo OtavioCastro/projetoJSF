@@ -4,16 +4,26 @@ import javax.persistence.Entity;
 import javax.persistence.*;
 
 @Entity
+@Table(name="automovel")
 public class Automovel {
+
+	@Column(name="anoFabricacao")
+	private Integer anoFabricacao;
+	
+	@Column(name="anoModelo")
+	private Integer anoModelo;
 	
 	@Id 
-	@GeneratedValue
-	private Long id;
-
-	private Integer anoFabricacao;
-	private String modelo;
-	private Integer anoModelo;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
+	
+	@Column(name="marca")
 	private String marca;
+
+	@Column(name="modelo")
+	private String modelo;
+	
+	@Column(name="observacoes")
 	private String observacoes;
 	
 	public Integer getAnoFabricacao() {
@@ -47,10 +57,10 @@ public class Automovel {
 		this.observacoes = observacoes;
 	}
 	
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 }
