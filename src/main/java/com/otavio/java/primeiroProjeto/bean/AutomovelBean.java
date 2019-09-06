@@ -34,12 +34,13 @@ public class AutomovelBean {
 		
 		EntityManager em = JPAUtil.getEntityManager();
 		
-		em.getTransaction().begin();
-		
+		em.getTransaction().begin(); // Mesma coisa que Transaction tx = em.getTransaction(), e depois tx.begin();
+		automovel = em.merge(automovel);
 		em.remove(automovel);
 		
 		em.getTransaction().commit();
 		em.close();
+		
 	}
 
 	public List<Automovel> getAutomoveis() {
@@ -54,6 +55,10 @@ public class AutomovelBean {
 		
 		return automoveis;
 		
+	}
+	
+	public String listaAutomoveis() {
+		return "listaAutomoveis";
 	}
 
 	public void setAutomoveis(List<Automovel> automoveis) {
